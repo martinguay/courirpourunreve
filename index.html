@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courir pour un Rêve - Au profit de Rêves d'enfants</title>
+    <style>
+        :root {
+            --primary-color: #0072bc; /* Bleu principal de Rêves d'enfants */
+            --secondary-color: #3399cc; /* Bleu secondaire */
+            --accent-color: #ffcc00; /* Jaune accent pour contraste */
+            --light-blue: #e6f7ff;
+            --dark-blue: #004a80;
+            --gray: #f4f4f4;
+            --white: #ffffff;
+            --black: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .navbar {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+        
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 72, 128, 0.8), rgba(0, 72, 128, 0.8)), url('https://source.unsplash.com/random/1200x600/?running,charity') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .event-details {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero .event-details h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-blue);
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            background-color: #ffdd33;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 3rem 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        .about-reves {
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-reves p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-schedule {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-schedule h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .schedule-item {
+            display: flex;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+        
+        .schedule-time {
+            min-width: 120px;
+            font-weight: bold;
+        }
+        
+        .partners {
+            text-align: center;
+            background-color: var(--gray);
+        }
+        
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .partner-logo {
+            width: 180px;
+            height: 120px;
+            background-color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .partner-logo img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        
+        .contact {
+            background-color: var(--light-blue);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .schedule-time {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://scout.mirego.com/api/protected/conversations/e73fdb70-5daf-4aac-b1a5-19ee31faf224/3ee5c7a2-ebd1-4a56-ba50-4f211f506a50.webp" alt="Courir pour un Rêve" class="logo">
+    </header>
+    
+    <nav class="navbar">
+        <a href="#about">À propos</a>
+        <a href="#schedule">Déroulement</a>
+        <a href="#partners">Partenaires</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <section class="hero">
+        <h1>Courir pour un Rêve</h1>
+        <p>Une course familiale au profit de la fondation Rêves d'enfants</p>
+        <div class="event-details">
+            <h2>20 juillet 2025</h2>
+            <p><strong>Lieu:</strong> Parc Réal Cloutier, 6106 Rue de l'Accueil, Québec, QC G3E 1G9</p>
+            <p><strong>Objectif:</strong> Amasser 10 000$ pour réaliser le rêve d'un enfant</p>
+            <a href="#" class="cta-button">Je m'inscris</a>
+        </div>
+    </section>
+    
+    <section id="about" class="container">
+        <h2 class="section-title">À propos de l'événement</h2>
+        <div class="about-reves">
+            <h3>Fondation Rêves d'enfants</h3>
+            <p>La Fondation Rêves d'enfants est un organisme national qui se consacre à réaliser les rêves d'enfants atteints d'une maladie grave. Depuis 1983, la fondation a transformé la vie de milliers d'enfants et de leurs familles en leur offrant des moments de bonheur et d'espoir au milieu de situations difficiles.</p>
+            <p>Chaque rêve exaucé apporte à l'enfant et à sa famille un moment de répit, une occasion de se créer des souvenirs inoubliables et une source de force pour faire face à la maladie.</p>
+            <a href="https://revesdenfants.ca/?form=FUNKSNYLLQT" class="cta-button">Faire un don</a>
+        </div>
+        
+        <div class="event-info">
+            <p>«Courir pour un rêve» verra sa toute première édition en juillet 2025. Sous forme de course familiale et amicale, nous avons comme objectif d'amasser la somme suffisante pour la réalisation d'un rêve, soit 10 000$, tout en procurant une expérience unique, colorée, touchante et mémorable pour tous les participants.</p>
+            <p>Pour une toute première expérience, nous débutons sur un site de festival local, qui célèbrera sa 30ème édition cette année et qui a une moyenne de 30 000 visiteurs, attendus pour 2025.</p>
+            <p>La clientèle cible est bien sûr l'ensemble des citoyens mais, il y aura également possibilité de s'inscrire en tant qu'équipe, afin de faire briller votre entreprise ou encore de mettre en place une activité d'équipe, de collègues, d'amis et ainsi, tisser des liens entre les membres ou encore de vous soumettre des petits défis amicaux entre collègues, familles ou amis!</p>
+        </div>
+    </section>
+    
+    <section id="schedule" class="container">
+        <h2 class="section-title">Déroulement de l'événement</h2>
+        <div class="event-schedule">
+            <h3>Programme du 20 juillet 2025</h3>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">8h00 - 8h45</div>
+                <div class="schedule-desc">Arrivées des participants</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">8h45</div>
+                <div class="schedule-desc">Mot de bienvenue</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">9h00</div>
+                <div class="schedule-desc">Départ de la course</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">10h00</div>
+                <div class="schedule-desc">Fin de la course</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">10h00</div>
+                <div class="schedule-desc">Remise des prix</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">10h15</div>
+                <div class="schedule-desc">Mot de la fin et dévoilement du montant amassé</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">10h30</div>
+                <div class="schedule-desc">Fin de l'événement</div>
+            </div>
+            
+            <p style="margin-top: 2rem;">Sur le site des «Fêtes de la famille», se trouve ensuite une grande quantité de jeux, d'animations et de restaurants, accessibles gratuitement, pour tous les participants.</p>
+        </div>
+    </section>
+    
+    <section id="partners" class="partners">
+        <div class="container">
+            <h2 class="section-title">Nos partenaires</h2>
+            <p>Nous remercions chaleureusement nos partenaires qui rendent cette course possible.</p>
+            
+            <div class="partner-logos">
+                <div class="partner-logo">
+                    <p>Partenaire 1</p>
+                </div>
+                <div class="partner-logo">
+                    <p>Partenaire 2</p>
+                </div>
+                <div class="partner-logo">
+                    <p>Partenaire 3</p>
+                </div>
+                <div class="partner-logo">
+                    <p>Partenaire 4</p>
+                </div>
+                <div class="partner-logo">
+                    <p>Fêtes de la famille de Saint-Émile</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem;">Vous souhaitez devenir partenaire? <a href="#contact" style="color: var(--primary-color);">Contactez-nous</a></p>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Informations générales</h3>
+                    <p><strong>Email:</strong> info@courirpourunreve.ca</p>
+                    <p><strong>Téléphone:</strong> (418) 123-4567</p>
+                    <p><strong>Adresse:</strong> 6106 Rue de l'Accueil, Québec, QC G3E 1G9</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Devenir bénévole</h3>
+                    <p>Nous sommes toujours à la recherche de bénévoles passionnés pour nous aider à faire de cet événement un succès!</p>
+                    <p><strong>Email:</strong> benevoles@courirpourunreve.ca</p>
+                    <p><strong>Téléphone:</strong> (418) 123-4569</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>Partenariats</h3>
+                    <p>Vous souhaitez devenir partenaire de notre événement?</p>
+                    <p><strong>Email:</strong> partenaires@courirpourunreve.ca</p>
+                    <p><strong>Téléphone:</strong> (418) 123-4568</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Courir pour un Rêve | Tous droits réservés</p>
+            <p>Un événement au profit de la <a href="https://revesdenfants.ca/" style="color: var(--accent-color);">Fondation Rêves d'enfants</a></p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Twitter">TW</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
